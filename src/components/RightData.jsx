@@ -1,11 +1,8 @@
 export default function RightCard({
-  selectedCities,
+  selectedCity,
   nightTemp,
-  setNightTemp,
   nightCondition,
-  setNightCondition,
   nightIcon,
-  setNightIcon,
   date,
 }) {
   return (
@@ -13,12 +10,12 @@ export default function RightCard({
       <div className="flex justify-around items-center flex-col w-[400px] h-[490px] absolute top-0 z-10 bg-[#111827]/50 backdrop-blur-md rounded-t-[50px]">
         <div className="p-1 pl-9 self-start ">
           <p className="text-white/20">{date}</p>
-          <h1 className="text-[45px] text-white">{selectedCities}</h1>
+          <h1 className="text-[45px] text-white">{selectedCity}</h1>
         </div>
         <img className=" w-[250px] h-[250px]" src={nightIcon} alt="" />
       </div>
-      <div className="flex justify-center items-center flex-col w-[400px] h-[210px] absolute bottom-0 z-10 bg-[#111827]/30 backdrop-blur-sm rounded-b-[50px] text-white">
-        <h3>{nightTemp}</h3>
+      <div className="flex justify-center items-center flex-col w-[400px] h-[210px] absolute bottom-0 z-10 bg-[#111827]/30 backdrop-blur-sm rounded-b-[50px] text-white  ">
+        <h3 className="text-[110px] font-bold mt-[-95px]">{nightTemp}&deg;</h3>
         <p>{nightCondition}</p>
       </div>
       <img

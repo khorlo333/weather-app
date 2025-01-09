@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
+
 export default function Search({
-  selectedCities,
-  setSelectedCities,
-  nightTemp,
+  selectedCity,
+  setSelectedCity,
   setNightTemp,
-  nightCondition,
   setNightCondition,
-  dayTemp,
   setDayTemp,
-  dayCondition,
   setDayCondition,
-  dayIcon,
   setDayIcon,
-  nightIcon,
   setNightIcon,
-  date,
   setDate,
 }) {
   const [cities, setCities] = useState([]);
@@ -30,30 +24,34 @@ export default function Search({
     incomingCities = incomingCities.flat();
     setCities(incomingCities);
   }
-  async function getWeatherData() {
+  async function getWeatherData(cityy) {
     const result = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=318279fc119b4909ba721334250801&q=${selectedCities}`
+      `https://api.weatherapi.com/v1/forecast.json?key=318279fc119b4909ba721334250801&q=${cityy}`
     );
     const data = await result.json();
 
-    setDate(data.forecast.forecastday[0].date);
     setDayTemp(data.current.temp_c);
     setDayCondition(data.current.condition.text);
     setDayIcon(data.current.condition.icon);
     setNightTemp(data.forecast.forecastday[0].hour[0].temp_c);
     setNightCondition(data.forecast.forecastday[0].hour[0].condition.text);
     setNightIcon(data.forecast.forecastday[0].hour[0].condition.icon);
+    setDate(data.forecast.forecastday[0].date);
   }
 
   useEffect(() => {
     getData();
-    getWeatherData();
+    getWeatherData(selectedCity);
   }, []);
+
   const searchHandler = (e) => {
     const search = e.target.value;
     setInputValue(search);
     const filtered = cities.filter((city) => {
-      return city.includes(search);
+      if (!search) {
+        return false;
+      }
+      return city.toLowerCase().includes(search.toLowerCase());
     });
     setSearched(filtered);
   };
@@ -63,21 +61,21 @@ export default function Search({
         value={inputValue}
         placeholder="Search"
         type="text"
-        className="z-10 w-[400px] h-[70px] absolute top-[-400px] left-[-50px] rounded-[70px] p-8 text-[45px] font-[550] border-none"
+        className="z-10 w-[400px] h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] top-5 left-5 outline-none"
         onChange={searchHandler}
       />
-      <div className="z-10 w-[400px] absolute top-[-325px] left-[-50px] ">
+      <div className="z-10 w-[400px] absolute top-[100px] left-5 ">
         {searched.length > 0 &&
-          searched.slice(0, 10).map((cityy) => (
+          searched.slice(0, 10).map((cityy, index) => (
             <p
-              key={cityy}
+              key={index}
               onClick={() => {
-                setSelectedCities(cityy);
+                setSelectedCity(cityy);
                 setSearched([]);
                 setInputValue("");
-                getWeatherData();
+                getWeatherData(cityy);
               }}
-              className="cursor-pointer flex flex-col gap-4 z-10 bg-slate-500 rounded-t-[15px]"
+              className="cursor-pointer flex flex-col gap-4 z-10 bg-slate-500 "
             >
               {cityy}
             </p>
