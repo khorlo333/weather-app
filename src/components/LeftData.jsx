@@ -16,7 +16,7 @@ export default function LeftCard({
       </div>
       <div className="flex justify-center items-center flex-col w-[400px] h-[210px] absolute bottom-0 z-10 bg-[#ffffff]/20 rounded-b-[50px] ">
         <h3 className="text-[110px] font-bold mt-[-95px]">{dayTemp}&deg;</h3>
-        <p>{dayCondition}</p>
+        <p className="font-extrabold">{dayCondition}</p>
       </div>
       <img
         className="w-[150px] h-[150px] absolute left-[-75px] top-[-75px] z-1"
