@@ -7,18 +7,21 @@ import Circles from "@/components/Circles";
 
 export default function Home() {
   const [selectedCities, setSelectedCities] = useState("Ulaanbaatar");
-  const [dayTemp, setDayTemp] = useState("");
-  const [dayCondition, setDayCondition] = useState("");
-  const [dayIcon, setDayIcon] = useState("");
-  const [nightTemp, setNightTemp] = useState("");
-  const [nightCondition, setNightCondition] = useState("");
-  const [nightIcon, setNightIcon] = useState("");
+  const [dayTemp, setDayTemp] = useState(null);
+  const [dayCondition, setDayCondition] = useState(null);
+  const [dayIcon, setDayIcon] = useState(null);
+  const [nightTemp, setNightTemp] = useState(null);
+  const [nightCondition, setNightCondition] = useState(null);
+  const [nightIcon, setNightIcon] = useState(null);
+  const [date, setDate] = useState(null);
   return (
     <div className="flex w-[100vw] h-[100vh] relative overflow-hidden">
       <Circles />
       <LeftSide
         selectedCities={selectedCities}
         setSelectedCities={setSelectedCities}
+        date={date}
+        setDate={setDate}
         dayTemp={dayTemp}
         setDayTemp={setDayTemp}
         dayCondition={dayCondition}
@@ -33,6 +36,8 @@ export default function Home() {
         setNightCondition={setNightCondition}
       />
       <RightSide
+        date={date}
+        setDate={setDate}
         nightTemp={nightTemp}
         setNightTemp={setNightTemp}
         nightCondition={nightCondition}

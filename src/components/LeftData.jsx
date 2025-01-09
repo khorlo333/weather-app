@@ -8,12 +8,13 @@ export default function LeftCard({
   setDayCondition,
   dayIcon,
   setDayIcon,
+  date,
 }) {
   return (
     <div className="flex justify-between items-center flex-col w-[400px] h-[700px] relative z-0 ">
       <div className="flex justify-around items-center flex-col w-[400px] h-[490px] absolute top-0 z-10 bg-[#ffffff]/40 backdrop-blur-lg rounded-t-[50px]">
         <div className="p-1 pl-9 self-start ">
-          <p className="text-black/20">Jan, 7, 2025</p>
+          <p className="text-black/20">{date}</p>
           <h1 className="text-[45px] font">{selectedCities}</h1>
         </div>
         <img className=" w-[250px] h-[250px]" src={dayIcon} alt="" />

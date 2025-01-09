@@ -9,10 +9,14 @@ export default function RightSide({
   setNightCondition,
   nightIcon,
   setNightIcon,
+  date,
+  setDate,
 }) {
   return (
     <div className="bg-[#0F141E] w-[50%] h-[100%] flex justify-center items-center">
       <RightCard
+        date={date}
+        setDate={setDate}
         selectedCities={selectedCities}
         setSelectedCities={setSelectedCities}
         nightTemp={nightTemp}
@@ -21,7 +25,7 @@ export default function RightSide({
         setNightCondition={setNightCondition}
         nightIcon={nightIcon}
         setNightIcon={setNightIcon}
-      />{" "}
+      />
     </div>
   );
 }

@@ -15,10 +15,14 @@ export default function LeftSide({
   setDayIcon,
   nightIcon,
   setNightIcon,
+  date,
+  setDate,
 }) {
   return (
     <div className="bg-[#F3F4F6] w-[50%] h-[100%] flex justify-center items-center">
       <Search
+        date={date}
+        setDate={setDate}
         selectedCities={selectedCities}
         setSelectedCities={setSelectedCities}
         dayTemp={dayTemp}
@@ -35,6 +39,8 @@ export default function LeftSide({
         setNightIcon={setNightIcon}
       />
       <LeftCard
+        date={date}
+        setDate={setDate}
         selectedCities={selectedCities}
         setSelectedCities={setSelectedCities}
         dayTemp={dayTemp}

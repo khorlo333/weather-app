@@ -6,12 +6,13 @@ export default function RightCard({
   setNightCondition,
   nightIcon,
   setNightIcon,
+  date,
 }) {
   return (
-    <div className="flex justify-between items-center flex-col w-[400px] h-[700px] relative z-10 rounded-t-md ">
-      <div className="flex justify-around items-center flex-col w-[400px] h-[490px] absolute top-0 z-10 bg-[#111827]/50 backdrop-blur-md rounded-t-md">
+    <div className="flex justify-between items-center flex-col w-[400px] h-[700px] relative z-10 rounded-t-[50px] ">
+      <div className="flex justify-around items-center flex-col w-[400px] h-[490px] absolute top-0 z-10 bg-[#111827]/50 backdrop-blur-md rounded-t-[50px]">
         <div className="p-1 pl-9 self-start ">
-          <p className="text-white/20">Jan 7, 2025</p>
+          <p className="text-white/20">{date}</p>
           <h1 className="text-[45px] text-white">{selectedCities}</h1>
         </div>
         <img className=" w-[250px] h-[250px]" src={nightIcon} alt="" />

@@ -14,6 +14,8 @@ export default function Search({
   setDayIcon,
   nightIcon,
   setNightIcon,
+  date,
+  setDate,
 }) {
   const [cities, setCities] = useState([]);
   const [searched, setSearched] = useState([]);
@@ -34,6 +36,7 @@ export default function Search({
     );
     const data = await result.json();
 
+    setDate(data.forecast.forecastday[0].date);
     setDayTemp(data.current.temp_c);
     setDayCondition(data.current.condition.text);
     setDayIcon(data.current.condition.icon);
@@ -55,14 +58,15 @@ export default function Search({
     setSearched(filtered);
   };
   return (
-    <div className="z-10 w-[400px] h-[39px] absolute flex justify-center">
+    <div className="z-10 w-[450px] h-[39px] absolute flex ">
       <input
         value={inputValue}
+        placeholder="Search"
         type="text"
-        className="z-10 w-[400px] h-[39px] absolute top-[-120px] left-[150px] pl-5"
+        className="z-10 w-[400px] h-[70px] absolute top-[-400px] left-[-50px] rounded-[70px] p-8 text-[45px] font-[550] border-none"
         onChange={searchHandler}
       />
-      <div className="z-10 w-[400px] h-[39px] absolute top-[-80px] left-[150px] ">
+      <div className="z-10 w-[400px] absolute top-[-325px] left-[-50px] ">
         {searched.length > 0 &&
           searched.slice(0, 10).map((cityy) => (
             <p
@@ -73,7 +77,7 @@ export default function Search({
                 setInputValue("");
                 getWeatherData();
               }}
-              className="cursor-pointer flex flex-col gap-4 z-10 bg-slate-50"
+              className="cursor-pointer flex flex-col gap-4 z-10 bg-slate-500 rounded-t-[15px]"
             >
               {cityy}
             </p>
