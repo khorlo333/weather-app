@@ -18,9 +18,14 @@ export default function Search({
   async function getData() {
     const result = await fetch("https://countriesnow.space/api/v0.1/countries");
     const data = await result.json();
-    let incomingCities = data.data.map((country) => {
-      return country.cities;
-    });
+    let incomingCities = data.data.map((country) =>
+      country.cities.map((hot) => {
+        return `${hot}, ${country.country}`;
+        // return {city:hot, country:country.country}
+      })
+    );
+    // ["ulaanbaatar, mongolia"]
+    // {city:"Ulaanbatar", country:"Mongolia"}
     incomingCities = incomingCities.flat();
     setCities(incomingCities);
   }
@@ -56,7 +61,7 @@ export default function Search({
     setSearched(filtered);
   };
   return (
-    <div className="z-10 w-[450px] h-[39px] absolute flex ">
+    <div className="z-10 w-[450px] h-[39px] absolute flex justify-center items-center text-[30px] ">
       <input
         value={inputValue}
         placeholder="Search"
@@ -64,7 +69,7 @@ export default function Search({
         className="z-10 w-[400px] h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] top-5 left-5 outline-none"
         onChange={searchHandler}
       />
-      <div className="z-10 w-[400px] absolute top-[100px] left-5 ">
+      <div className="z-10 w-[400px] absolute top-[100px] left-[50px] rounded-[30px] overflow-hidden">
         {searched.length > 0 &&
           searched.slice(0, 10).map((cityy, index) => (
             <p
@@ -75,8 +80,11 @@ export default function Search({
                 setInputValue("");
                 getWeatherData(cityy);
               }}
-              className="cursor-pointer flex flex-col gap-4 z-10 bg-slate-500 "
+              className="cursor-pointer flex z-10 bg-[#fff] p-3 text-[25px] font-bold "
             >
+              <span>
+                <img src="location.svg" alt="" />
+              </span>
               {cityy}
             </p>
           ))}

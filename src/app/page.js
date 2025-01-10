@@ -8,11 +8,11 @@ import Circles from "@/components/Circles";
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Ulaanbaatar");
   const [nightTemp, setNightTemp] = useState(null);
-  const [nightCondition, setNightCondition] = useState(null);
+  const [nightCondition, setNightCondition] = useState("");
   const [nightIcon, setNightIcon] = useState(null);
   const [date, setDate] = useState(null);
   const [dayTemp, setDayTemp] = useState(null);
-  const [dayCondition, setDayCondition] = useState(null);
+  const [dayCondition, setDayCondition] = useState("");
   const [dayIcon, setDayIcon] = useState(null);
 
   return (
