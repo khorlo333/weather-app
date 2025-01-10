@@ -31,7 +31,14 @@ export default function LeftCard({
       <div className="flex justify-around items-center flex-col w-[400px] h-[490px] absolute top-0 z-10 bg-[#ffffff]/40 backdrop-blur-lg rounded-t-[50px]">
         <div className="p-1 pl-9 self-start ">
           <p className="text-black/20">{date}</p>
-          <h1 className="text-[45px]">{selectedCity}</h1>
+          <h1 className="text-[45px] relative">
+            {selectedCity}
+            <img
+              className="absolute top-3 right-[-25px]"
+              src="location.svg"
+              alt=""
+            />
+          </h1>
         </div>
         <img
           className=" w-[250px] h-[250px]"

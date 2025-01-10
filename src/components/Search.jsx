@@ -61,15 +61,22 @@ export default function Search({
     setSearched(filtered);
   };
   return (
-    <div className="z-10 w-[450px] h-[39px] absolute flex justify-center items-center text-[30px] ">
-      <input
-        value={inputValue}
-        placeholder="Search"
-        type="text"
-        className="z-10 w-[400px] h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] top-5 left-5 outline-none"
-        onChange={searchHandler}
-      />
-      <div className="z-10 w-[400px] absolute top-[100px] left-[50px] rounded-[30px] overflow-hidden">
+    <div className="z-10 w-[550px] absolute flex justify-center items-center text-[30px] ">
+      <div className="flex z-10 w-[500px] justify-center items-center  h-[70px] bg-[#fff] rounded-[70px] absolute top-7 right-[-15%]">
+        <img
+          className="z-10 w-[50px] absolute left-3 top-3"
+          src="search-icon.svg"
+          alt=""
+        />
+        <input
+          value={inputValue}
+          placeholder="Search"
+          type="text"
+          className="z-10 w-[400px] right-11 h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] outline-none"
+          onChange={searchHandler}
+        />
+      </div>
+      <div className="z-10 w-[500px] absolute top-[110px] right-[-15%] rounded-[30px] overflow-hidden">
         {searched.length > 0 &&
           searched.slice(0, 10).map((cityy, index) => (
             <p
