@@ -4,7 +4,6 @@ export default function RightSide({
   selectedCity,
   nightTemp,
   nightCondition,
-  nightIcon,
   date,
 }) {
   return (
@@ -14,7 +13,6 @@ export default function RightSide({
         selectedCity={selectedCity}
         nightTemp={nightTemp}
         nightCondition={nightCondition}
-        nightIcon={nightIcon}
       />
     </div>
   );

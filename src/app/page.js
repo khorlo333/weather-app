@@ -9,11 +9,9 @@ export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Ulaanbaatar");
   const [nightTemp, setNightTemp] = useState(null);
   const [nightCondition, setNightCondition] = useState("");
-  const [nightIcon, setNightIcon] = useState(null);
   const [date, setDate] = useState(null);
   const [dayTemp, setDayTemp] = useState(null);
   const [dayCondition, setDayCondition] = useState("");
-  const [dayIcon, setDayIcon] = useState(null);
 
   return (
     <div className="flex w-[100vw] h-[100vh] relative overflow-hidden">
@@ -26,22 +24,18 @@ export default function Home() {
         setDayCondition={setDayCondition}
         setNightTemp={setNightTemp}
         setNightCondition={setNightCondition}
-        setDayIcon={setDayIcon}
-        setNightIcon={setNightIcon}
       />
       <LeftSide
         date={date}
         selectedCity={selectedCity}
         dayTemp={dayTemp}
         dayCondition={dayCondition}
-        dayIcon={dayIcon}
       />
       <RightSide
         date={date}
         selectedCity={selectedCity}
         nightTemp={nightTemp}
         nightCondition={nightCondition}
-        nightIcon={nightIcon}
       />
     </div>
   );

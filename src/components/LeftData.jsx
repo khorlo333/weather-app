@@ -2,7 +2,6 @@ export default function LeftCard({
   selectedCity,
   dayTemp,
   dayCondition,
-  dayIcon,
   date,
 }) {
   function changeWeatherIcon(dayCondition) {
@@ -32,9 +31,9 @@ export default function LeftCard({
         <div className="p-1 pl-9 self-start ">
           <p className="text-black/20">{date}</p>
           <h1 className="text-[45px] relative">
-            {selectedCity}
+            {selectedCity.split(",")[0]}
             <img
-              className="absolute top-3 right-[-25px]"
+              className="absolute top-3 right-[-35px]"
               src="location.svg"
               alt=""
             />

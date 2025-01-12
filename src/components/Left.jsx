@@ -1,10 +1,8 @@
-import { useState } from "react";
 import LeftCard from "./LeftData";
 export default function LeftSide({
   selectedCity,
   dayTemp,
   dayCondition,
-  dayIcon,
   date,
 }) {
   return (
@@ -14,7 +12,6 @@ export default function LeftSide({
         selectedCity={selectedCity}
         dayTemp={dayTemp}
         dayCondition={dayCondition}
-        dayIcon={dayIcon}
       />
     </div>
   );

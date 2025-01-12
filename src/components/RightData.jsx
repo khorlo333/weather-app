@@ -2,7 +2,6 @@ export default function RightCard({
   selectedCity,
   nightTemp,
   nightCondition,
-  nightIcon,
   date,
 }) {
   function changeWeatherIcon(nightCondition) {
@@ -31,9 +30,9 @@ export default function RightCard({
         <div className="p-1 pl-9 self-start ">
           <p className="text-white/20">{date}</p>
           <h1 className="text-[45px] relative text-white">
-            {selectedCity}{" "}
+            {selectedCity.split(",")[0]}
             <img
-              className="absolute top-3 right-[-25px]"
+              className="absolute top-3 right-[-35px]"
               src="location.svg"
               alt=""
             />

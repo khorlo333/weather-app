@@ -7,8 +7,6 @@ export default function Search({
   setNightCondition,
   setDayTemp,
   setDayCondition,
-  setDayIcon,
-  setNightIcon,
   setDate,
 }) {
   const [cities, setCities] = useState([]);
@@ -19,8 +17,8 @@ export default function Search({
     const result = await fetch("https://countriesnow.space/api/v0.1/countries");
     const data = await result.json();
     let incomingCities = data.data.map((country) =>
-      country.cities.map((hot) => {
-        return `${hot}, ${country.country}`;
+      country.cities.map((city) => {
+        return `${city}, ${country.country}`;
         // return {city:hot, country:country.country}
       })
     );
@@ -37,10 +35,8 @@ export default function Search({
 
     setDayTemp(data.current.temp_c);
     setDayCondition(data.current.condition.text);
-    setDayIcon(data.current.condition.icon);
     setNightTemp(data.forecast.forecastday[0].hour[0].temp_c);
     setNightCondition(data.forecast.forecastday[0].hour[0].condition.text);
-    setNightIcon(data.forecast.forecastday[0].hour[0].condition.icon);
     setDate(data.forecast.forecastday[0].date);
   }
 
@@ -62,7 +58,7 @@ export default function Search({
   };
   return (
     <div className="z-10 w-[550px] absolute flex justify-center items-center text-[30px] ">
-      <div className="flex z-10 w-[500px] justify-center items-center  h-[70px] bg-[#fff] rounded-[70px] absolute top-7 right-[-15%]">
+      <div className="flex z-10 w-[500px] justify-center items-center  h-[70px] bg-[#fff] rounded-[70px] absolute top-7 right-[-24%]">
         <img
           className="z-10 w-[50px] absolute left-3 top-3"
           src="search-icon.svg"
@@ -72,11 +68,11 @@ export default function Search({
           value={inputValue}
           placeholder="Search"
           type="text"
-          className="z-10 w-[400px] right-11 h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] outline-none"
+          className="z-10 w-[400px] right-10 h-[70px] absolute rounded-[70px] p-8 text-[45px] font-[550] outline-none"
           onChange={searchHandler}
         />
       </div>
-      <div className="z-10 w-[500px] absolute top-[110px] right-[-15%] rounded-[30px] overflow-hidden">
+      <div className="z-10 w-[500px] absolute top-[110px] right-[-25%] rounded-[30px] overflow-hidden">
         {searched.length > 0 &&
           searched.slice(0, 10).map((cityy, index) => (
             <p
